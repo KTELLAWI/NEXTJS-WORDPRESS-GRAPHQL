@@ -11,7 +11,7 @@ module.exports = {
 
 		extend: {
       height:{
-        'almost-screen': 'calc(100vh - 10%)'
+        'almost-screen': 'calc(-16rem +100vh)'
       }
     },
 	backgroundColor: theme => ({

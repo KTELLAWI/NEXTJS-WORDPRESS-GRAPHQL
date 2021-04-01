@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { isEmpty } from "lodash";
 
 //import styles from '../styles/Home.module.css'
-import client from '../src/apollo/Client'
+import client from '../src/apollo/client'
 import  GET_MENUS  from '../src/queries/get-menus'
 import Layout from "../src/components/layout/index"
 import { gql } from "@apollo/client";

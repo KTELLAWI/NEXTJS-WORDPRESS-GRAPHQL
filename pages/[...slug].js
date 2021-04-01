@@ -1,4 +1,4 @@
-import client from "../src/apollo/Client"
+import client from "../src/apollo/client"
 import { GET_PAGES } from "../src/queries/GET_PAGES"
 //import  {GET_PAGE}  from  '../src/queries/GET_PAGE'
 import { useRouter } from 'next/router'

@@ -11,7 +11,7 @@ const Footer =({footer,footerMenus})=>{
     
     
     return(
-        <footer className=" flex  w-full bottom-0  bg-secondary p-6 mb-auto">
+        <footer className=" flex  w-full   bg-secondary p-6 mb-auto">
         <div className="flex  flex-wrap -mx-2 overflow-hidden">
 
   <div class="my-2 px-2 w-1/3 overflow-hidden sm:w-1/3 lg:w-1/3 xl:w-1/3">

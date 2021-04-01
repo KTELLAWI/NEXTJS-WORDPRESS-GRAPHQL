@@ -17,7 +17,8 @@ const defaultOptions = {
  //"https://aromainsider-5588a5.ingress-baronn.easywp.com/graphql"
 const link = createHttpLink({
     // uri: `${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/graphql`,
-    uri: "https://aromainsider-5588a5.ingress-baronn.easywp.com/graphql"
+    uri: process.env.GRAPHQL_HOST
+   // "https://aromainsider-5588a5.ingress-baronn.easywp.com/graphql"
     //"http://localhost:8020/graphql",
 });
 

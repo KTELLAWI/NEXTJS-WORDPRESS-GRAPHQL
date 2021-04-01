@@ -1,6 +1,7 @@
 const path = require('path')
 //const withVideos = require('next-videos')
 //module.exports = withVideos()
+const allowedImageWordPressDomain = new URL(process.env.GRAPHQL_HOST).hostname
 
 
 module.exports = {
@@ -15,5 +16,9 @@ module.exports = {
 	},
 	sassOptions: {
 		includePaths: [path.join(__dirname, 'styles')]
-	}
+	},
+	images: {
+		domains: [ allowedImageWordPressDomain, 'via.placeholder.com' ],
+	},
 }
+
