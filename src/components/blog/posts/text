@@ -1,0 +1,16 @@
+osts: posts(where: {offsetPagination: {size: 7, offset:  5}}) {
+    edges {
+      node {
+        id
+        title
+        excerpt
+        slug
+        featuredImage {
+          node {
+            altText
+            sourceUrl
+          }
+        }
+      }
+    }
+  

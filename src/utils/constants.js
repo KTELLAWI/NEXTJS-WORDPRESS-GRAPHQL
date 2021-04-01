@@ -1,1 +1,1 @@
-const DEFAULT_IMG_URL= "https://via.placeholder.com/400*225"
+const DEFAULT_IMG_URL= "https://via.placeholder.com/150"

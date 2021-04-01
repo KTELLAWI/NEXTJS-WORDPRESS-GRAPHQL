@@ -15,7 +15,7 @@ const Nav = ({headerMenus,header}) => {
 		<div className=''>
 		<nav className="flex  items-center justify-between flex-wrap bg-white box-border shadow-lg p-6 ">
 			<div className="flex   items-center flex-shrink-0 text-white mr-6 ">
-				<Link href="http://localhost:3000">
+				<Link href="/">
 					<a>
 				<img src={header.siteLogoUrl} width='150' height="100" className="mr-4"/>
 				</a>

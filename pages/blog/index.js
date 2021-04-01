@@ -11,7 +11,7 @@ const Blog = ({ data }) => {
     const pagesCount = totalPagesCount(data?.posts?.pageInfo?.offsetPagination?.total ?? 0);
     return (
         <Layout data={data}>
-            hello
+            
            <Posts posts={data?.posts?.edges ?? []}/>
            { /**   <Pagination pagesCount={pagesCount} postName="blog" />*/}  
       </Layout>
@@ -25,7 +25,7 @@ export async function getStaticProps() {
         query: GET_POSTS,
         variables: {
             uri: '/blog',
-            perPage: 7,
+            perPage: 17,
             offset:5,
         },
     });

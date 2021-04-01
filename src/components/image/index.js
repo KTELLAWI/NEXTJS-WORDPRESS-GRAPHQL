@@ -54,23 +54,5 @@ const Image = (props) => {
     }
 };
 
-Image.propTypes = {
-    altText: PropTypes.string,
-    title: PropTypes.string,
-    sourceUrl: PropTypes.string,
-    layout: PropTypes.string,
-    showDefault: PropTypes.bool,
-    containerClassName: PropTypes.string,
-    className: PropTypes.string
-};
-
-Image.defaultProps = {
-    altText: '',
-    title: '',
-    sourceUrl: '',
-    showDefault: true,
-    containerClassNames: '',
-    className: 'post__image',
-};
 
 export default Image;
