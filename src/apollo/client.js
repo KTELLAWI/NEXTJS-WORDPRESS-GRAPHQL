@@ -22,6 +22,7 @@ const link = createHttpLink({
     //"http://localhost:8020/graphql",
 });
 
+
 const cache = new InMemoryCache({
     resultCaching: false,
 });

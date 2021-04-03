@@ -1,7 +1,7 @@
 import client from "../../src/apollo/client";
 import Layout from "../../src/components/layout/index";
-import { PER_PAGE_FIRST, totalPagesCount } from "../../src/utils/pagination";
-import Pagination from "../../src/utils/pagination";
+import { PER_PAGE_FIRST, totalPagesCount,PER_PAGE_REST } from "../../src/utils/pagination";
+import Pagination from "../../src/components/blog/pagination/pagination";
 import Posts from "../../src/components/blog/posts/index";
 import {handleRedirectsAndReturnData} from "../../src/utils/slugs";
 import {GET_POSTS} from "../../src/queries/posts/GET_POSTS";
@@ -13,7 +13,7 @@ const Blog = ({ data }) => {
         <Layout data={data}>
             
            <Posts posts={data?.posts?.edges ?? []}/>
-           { /**   <Pagination pagesCount={pagesCount} postName="blog" />*/}  
+             <Pagination pagesCount={pagesCount} postName="blog" /> 
       </Layout>
     );
 };
@@ -25,8 +25,8 @@ export async function getStaticProps() {
         query: GET_POSTS,
         variables: {
             uri: '/blog',
-            perPage: 17,
-            offset:5,
+            perPage: PER_PAGE_FIRST,
+            offset:PER_PAGE_REST,
         },
     });
 
