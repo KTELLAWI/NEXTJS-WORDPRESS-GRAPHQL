@@ -15,6 +15,10 @@ import LoadMorePosts from '../src/components/news/load-more-posts'
 import client from '../src/apollo/client'
 
 import {GET_SEARCH_RESULTS_WITH_TOTAL_PAGES,GET_SEARCH_RESULTS} from '../src/queries/search/get-search-results'
+import Loading from '../src/components/search/loading/index';
+import ErrorMessage from '../src/components/search/error/index';
+import ResultInfo from '../src/components/search/result-info';
+import Router from 'next/router'
 
 export default function searchfor ( {dataa} ) {
 	
@@ -23,82 +27,16 @@ export default function searchfor ( {dataa} ) {
   const [ queryResultPosts, setQueryResultPosts  ] = useState( {} );
   const [ showResultInfo, setShowResultInfo ] = useState( false );
 
+  const searchQueryString = process.browser ? Router?.query?.s : '';
+
 
 	const router = useRouter();
     const { header, footer, headerMenus, footerMenus, slug } = dataa || {};
-    const [ searchQuery, setSearchQuery ] = useState( );
+    const [ searchQuery, setSearchQuery ] = useState(gsearchQueryString);
 
 
-       const GET_SEARCH = gql`
-       query GET_SEARCH( $first: Int, $after: String, $query: String ) {
-        posts: posts(first: $first, after: $after, where: {search: $query}) {
-          edges {
-            node {
-                id
-                title
-                excerpt
-                slug
-                featuredImage {
-                  node {
-                    sourceUrl
-	                altText
-                  }
-                }
-            }
-            cursor
-          }
-          pageInfo {
-            offsetPagination {
-              total
-            }
-            hasNextPage
-            endCursor
-          }
-        }
-    }
-    `
-///////////////////////
 
-const GET_DOGS = gql`
-  query GetDogs {
-    dogs {
-      id
-      breed
-    }
-  }
-`
-;
-/** 
-const { loading, error, data } = useQuery(GET_DOGS);
-
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
-
-*/
-/** 
-const { loading, error, data } = useQuery( GET_SEARCH_RESULTS_WITH_TOTAL_PAGES,
-    {
-        variables: {
-            first: PER_PAGE_FIRST,
-            after: null,
-            query: searchQuery
-          },
-          onCompleted: ( data ) => {
-              const dd=JSON.parse(data)
-            setQueryResultPosts( dd );
-            setShowResultInfo( true );
-            console.log("ddddd",data);
-          },
-   
-  })
- 
-  if (loading) return <p>Loading ...</p>;
-  if (error)return `Error! ${error.message}`;
-
-*/
-
-////////////////////////////
-   const [ fetchPosts ] = useLazyQuery( GET_SEARCH_RESULTS_WITH_TOTAL_PAGES, {
+   const [ fetchPosts,{ loading} ] = useLazyQuery( GET_SEARCH_RESULTS_WITH_TOTAL_PAGES, {
    // fetchPolicy: "network-only",
     notifyOnNetworkStatusChange: true,
     onCompleted: ( data ) => {
@@ -139,24 +77,43 @@ const { loading, error, data } = useQuery( GET_SEARCH_RESULTS_WITH_TOTAL_PAGES,
         console.log("query",searchQuery)
   
       };
-      
+      const totalPostResultCount = queryResultPosts?.pageInfo?.offsetPagination?.total;
      
       console.log("results",queryResultPosts)
       console.log("query",searchQuery)
 
+      useEffect (()=>{
+        
+        if(searchQueryString){
+          setSearchQuery(searchQueryString)
+          fetchPosts( {
+            variables: {
+              first: PER_PAGE_FIRST,
+              after: null,
+              query: searchQuery
+            }
+          } );
+        }
+
+
+      },[searchQueryString])
+
 	return (
         <>
         <Header header={ header } headerMenus={ headerMenus?.edges ?? [] } slug={slug}/>
-        <div className="mx-auto min-h-almost-screen " >
+        <div className="mx-auto min-h-almost-screen  " >
          <SearchBox
           searchQuery={ searchQuery }
           setSearchQuery={ setSearchQuery }
           handleSearchFormSubmit={handleSearchFormSubmit}
 
          /> 
+         <ResultInfo showResultInfo={showResultInfo} totalPostResultCount={totalPostResultCount} classnames="mt-4 text-center" />
+          <ErrorMessage text={searchError} classes="max-w-xl mx-auto -mt-8"/>
+          <Loading visible={loading} showSpinner classes=" text-center    mx-auto mt-11"/>
           <LoadMorePosts
               posts={queryResultPosts}
-              classes="md:container px-5 py-12 mx-auto min-h-almost-screen"
+              classes="md:container px- py-12 mx-auto  min-h-almost-screen"
               graphQLQuery={GET_SEARCH_RESULTS}
               searchQuery={searchQuery}
           />

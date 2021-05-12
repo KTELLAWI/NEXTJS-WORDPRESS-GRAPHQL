@@ -2,8 +2,12 @@ import { isEmpty } from "lodash";
 import Link from "next/link";
 import {useState} from 'react'
 import {isCustomPageUri} from '../../../utils/slugs'
+import PropTypes from 'prop-types';
+import NavSearch from '../../../components/search/nav-search/index'
+import  SvgSearchIcon  from '../../../icons/SvgSearchIcon';
 
-const Nav = ({headerMenus,header}) => {
+
+const Nav = ({headerMenus,header,slug}) => {
 
 	if ( isEmpty(headerMenus) ) {
 		return null;
@@ -58,14 +62,16 @@ const Nav = ({headerMenus,header}) => {
 								<a className="block   mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:color-blue-200 mr-4 text-m">BLOG</a>
 							</Link>
 							<Link href='/news/'>
-								<a className="block   mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:color-blue-200 mr-4 text-m">News</a>
+								<a className="block   mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:color-blue-200 mr-4 text-m">NEWS</a>
 							</Link>
 							<Link href='/searchfor'>
-								<a className="block   mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:color-blue-200 mr-4 text-m">search</a>
+							<div className="flex items-center space-between ">
+							<SvgSearchIcon className="h-4 w-4 fill-current text-gray-500 block  lg:hidden"/>
+								<a className="block    lg:hidden lg:mt-0 text-teal-200 hover:color-blue-200 mr-4 text-m">SEARCH</a>
+							</div>
+							   
 							</Link>
-							<Link href='/api/hi'>
-								<a className="block   mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:color-blue-200 mr-4 text-m">message</a>
-							</Link>
+							
 
 
 					</div>
@@ -73,9 +79,27 @@ const Nav = ({headerMenus,header}) => {
 				
 				
 			</div>
+			<div className="hidden sm:block flex-col-reverse">
+				{"search"!= slug ? (
+					<NavSearch
+
+					/>
+				):null}
+			</div>
 		</nav>
 		</div>
 	)
 }
 
 export default Nav;
+Nav.propTypes = {
+    header: PropTypes.object,
+    headerMenus: PropTypes.array,
+    slug: PropTypes.string
+  };
+  
+Nav.defaultProps = {
+    header: {},
+    headerMenus: [],
+    slug: ''
+  };
