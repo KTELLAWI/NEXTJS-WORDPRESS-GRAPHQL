@@ -12,6 +12,7 @@ import Footer from "../src/components/layout/Footer"
 import SearchBox from '../src/components/search/search-box';
 import { PER_PAGE_FIRST } from "../src/utils/pagination";
 import LoadMorePosts from '../src/components/news/load-more-posts'
+import client from '../src/apollo/client'
 
 import {GET_SEARCH_RESULTS_WITH_TOTAL_PAGES,GET_SEARCH_RESULTS} from '../src/queries/search/get-search-results'
 
