@@ -1,18 +1,12 @@
 import Head from 'next/head';
 import { isEmpty } from 'lodash';
 import { gql,useLazyQuery,useQuery } from '@apollo/client';
-//import styles from '../styles/Home.module.css'
-//import Router from 'next/router
-//import LoadMorePosts from '../src/components/news/load-more-posts'
-import client from '../src/apollo/client';
+
 import  GET_MENUS  from '../src/queries/get-menus';
-import Layout from '../src/components/layout/index';
 import { handleRedirectsAndReturnData } from '../src/utils/slugs';
 import {useEffect, useState} from 'react';
-//import {getAuthToken} from "../src/utils/cookies";
 import {useRouter} from 'next/router';
-//import Video from '../src/components/layout'
-//import ReactPlayer from 'react-player';
+
 import Header from '../src/components/layout/header/Header';
 import Footer from '../src/components/layout/Footer'
 import SearchBox from '../src/components/search/search-box';
