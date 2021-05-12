@@ -11,8 +11,8 @@ const Footer =({footer,footerMenus})=>{
     
     
     return(
-        <footer className=" flex  w-full Bottom-0  z-0    bg-secondary p-6 mb-auto">
-        <div className="flex  flex-wrap -mx-2 overflow-hidden">
+  <footer className=" flex  w-full   z-0    bg-secondary p-6 mb-auto">
+  <div className="flex  flex-wrap -mx-2 overflow-hidden">
 
   <div class="my-2 px-2 w-1/3 overflow-hidden sm:w-1/3 lg:w-1/3 xl:w-1/3">
   <div className="text-white" dangerouslySetInnerHTML={{__html: sanitize(footer?.sidebarOne) }} /> 
@@ -60,4 +60,4 @@ const Footer =({footer,footerMenus})=>{
     )
 }
 
-export default Footer
+export default Footer;

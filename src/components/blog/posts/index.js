@@ -9,9 +9,9 @@ const Posts = ({posts}) => {
     }
 
     return (
-        <div className="flex flex-wrap -mb-4">
+        <div className="flex flex-wrap mb-4 mt-3">
             {
-              posts.map((post) => {
+              posts.map((post) => { 
                     return (
                         <div key={post?.node?.id ?? ""} className="w-full md:w-1/2 lg:w-1/3 mb-4 px-2 ">
                             <Post post={post?.node}/>

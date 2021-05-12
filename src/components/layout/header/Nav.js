@@ -1,6 +1,7 @@
 import { isEmpty } from "lodash";
 import Link from "next/link";
 import {useState} from 'react'
+import {isCustomPageUri} from '../../../utils/slugs'
 
 const Nav = ({headerMenus,header}) => {
 
@@ -38,20 +39,39 @@ const Nav = ({headerMenus,header}) => {
 			<div className={`${ isMenuVisible ? 'max-h-full' : 'h-0' }   overflow-hidden lg:h-auto text-color-blue-300 w-full block flex-grow lg:flex lg:items-center  justify-end lg:w-auto sticky top-0`}>
 				{ headerMenus?.length ? (
 					//<div className="text-m lg:flex-grow ml-7 justify-between-space  flex items-end ">
-						 headerMenus?.map( menu => (
-							<Link key={menu?.node.id} href={menu?.node?.path}>
+					<div className="text-sm lg:flex-grow">
+						{  headerMenus?.map( menu => {
+							if (! isCustomPageUri(menu?.node?.path)){
+								return(
+									<Link key={menu?.node.id} href={menu?.node?.path}>
 								<a
 									className="block   mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:color-blue-200 mr-4 text-m">
 									{menu?.node?.label}
 								</a>
 							</Link>
-						) ) 
-					//</div>
+								)
+								
+							}
+							
+						  } ) }
+						  <Link href='/blog/'>
+								<a className="block   mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:color-blue-200 mr-4 text-m">BLOG</a>
+							</Link>
+							<Link href='/news/'>
+								<a className="block   mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:color-blue-200 mr-4 text-m">News</a>
+							</Link>
+							<Link href='/searchfor'>
+								<a className="block   mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:color-blue-200 mr-4 text-m">search</a>
+							</Link>
+							<Link href='/api/hi'>
+								<a className="block   mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:color-blue-200 mr-4 text-m">message</a>
+							</Link>
+
+
+					</div>
 				) : null }
-				<div>
-					<a href="#"
-					   className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Contact</a>
-				</div>
+				
+				
 			</div>
 		</nav>
 		</div>

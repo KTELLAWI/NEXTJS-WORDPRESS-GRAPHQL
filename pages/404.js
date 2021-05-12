@@ -10,7 +10,7 @@ function Error404({data}) {
     console.log('dddd',data)
 
     return (
-        <>
+        < >
              <Head>
                 <title>AROMA INSIDER</title>
                 <link rel="icon" href={header?.favicon} />

@@ -1,6 +1,6 @@
-const  ddd =()=> {
-        return "dddddd"
-        
-    }
+const  ddd = ()=> {
+	return 'dddddd';
 
-    export default   ddd
+};
+
+export default   ddd;

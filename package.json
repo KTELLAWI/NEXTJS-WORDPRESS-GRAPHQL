@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint src/components/* src/utils/* pages/*",
+    "lint:fix": "eslint --fix src/components/* src/utils/* pages/*",
+    "precommit": "npm run lint:fix && npm run build"
   },
   "dependencies": {
     "@apollo/client": "^3.3.13",
@@ -27,6 +30,12 @@
     "validator": "^13.5.2"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "eslint": "^7.26.0",
+    "eslint-config-wordpress": "^2.0.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-jsdoc": "^33.3.0",
+    "eslint-plugin-react": "^7.23.2",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^14.0.1",
     "postcss-preset-env": "^6.7.0",

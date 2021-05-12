@@ -24,9 +24,9 @@ export async function getStaticProps() {
     const { data, errors } = await client.query({
         query: GET_POSTS,
         variables: {
-            uri: '/blog',
-            perPage: PER_PAGE_FIRST,
-            offset:PER_PAGE_REST,
+          //  uri: '/blog',
+            perPage: 4,
+            offset:0,
         },
     });
 

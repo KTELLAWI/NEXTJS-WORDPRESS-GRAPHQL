@@ -1,41 +1,41 @@
-import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
+import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 
 const defaultOptions = {
-    watchQuery: {
-        fetchPolicy: "no-cache",
-        errorPolicy: "ignore",
-    },
-    query: {
-        fetchPolicy: "no-cache",
-        errorPolicy: "all",
-    },
+	watchQuery: {
+		fetchPolicy: "no-cache",
+		errorPolicy: "ignore",
+	},
+	query: {
+		fetchPolicy: "no-cache",
+		errorPolicy: "all",
+	},
 };
 
-/**
- * Instantiate required constructor fields
- */
- //"https://aromainsider-5588a5.ingress-baronn.easywp.com/graphql"
-const link = createHttpLink({
-    // uri: `${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/graphql`,
-    uri: process.env.GRAPHQL_HOST
-   // "https://aromainsider-5588a5.ingress-baronn.easywp.com/graphql"
-    //"http://localhost:8020/graphql",
-});
-
-
 const cache = new InMemoryCache({
-    resultCaching: false,
+	resultCaching: false,
 });
+
+/**
+ * The credentials: 'include' allows cookies to be automatically sent
+ * along with the request 'include' because backend is on another domain.
+ *
+ * @see https://www.apollographql.com/docs/react/networking/authentication/#cookie
+ */
+const link = createHttpLink({
+
+	uri:"http://34.72.169.230/graphql",
+	//"http://34.72.169.230/graphql",
+	//`${process.env.NEXT_PUBLIC_GRAPHQL_HOST}/graphql`,
+     //
+    
+    
+})
 
 const client = new ApolloClient({
-   link,
-    // uri: 'http://localhost:8020/graphql',
-   // uri: 'https://48p1r2roz4.sse.codesandbox.io',
- // cache: new InMemoryCache()
-    cache,
-    //link,
-    defaultOptions: defaultOptions,
+	connectToDevTools: true,
+	link,
+	cache,
+	defaultOptions
 });
-
 
 export default client;

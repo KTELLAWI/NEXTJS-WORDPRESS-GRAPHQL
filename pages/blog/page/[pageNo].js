@@ -38,7 +38,7 @@ export async function getStaticProps({ params }) {
     const { pageNo } = params || {};
     const offset = getPageOffset(pageNo);
     const variables = {
-        page: '/blog/',
+       // page: '/blog/',
         perPage: pageNo === "1" ? PER_PAGE_FIRST : PER_PAGE_REST,
         offset,
     };
@@ -75,7 +75,7 @@ export async function getStaticPaths() {
             pageNo: (index + 1).toString(),
         },
     }));
-
+      console.log("paths",paths)
     return {
         paths: [...paths],
         fallback: false,

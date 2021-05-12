@@ -52,7 +52,7 @@ footer: getFooter {
 `
 
   const GET_MENUS = gql`
-query MyQuery {
+  query MyQuery {
  ${HeaderFooter}
  page: pageBy(uri:"/") {
   id

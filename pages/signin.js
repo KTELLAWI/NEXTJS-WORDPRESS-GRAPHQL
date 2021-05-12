@@ -1,17 +1,17 @@
 //import { GET_PAGE } from "../src/queries/GET_PAGE";
-import client from '../src/apollo/client'
-import Layout from '../src/components/layout/index'
-import { gql } from "@apollo/client";
+import client from '../src/apollo/client';
+import Layout from '../src/components/layout/index';
+import { gql } from '@apollo/client';
 //import {handleRedirectsAndReturnData} from '../src/utils/slugs'
-const signin =({data})=>{
+const signin = ( {data} )=>{
 
-    return "signssssin"
-}
+	return 'signssssin';
+};
 
-export default signin;   
+export default signin;
 
-export async function getStaticProps(context) {
-    const GET_PAGE = gql`
+export async function getStaticProps( context ) {
+	const GET_PAGE = gql`
 	 query GET_PAGE($uri: String) {
 	 page: pageBy(uri: $uri) {
 	    id
@@ -83,28 +83,28 @@ export async function getStaticProps(context) {
   }
 
 	}
-	 `
-	 
-const { data, errors } = await client.query({
-    query: GET_PAGE,
-    variables :{
-        uri:'/'
-    }
-  
-});
+	 `;
 
-const defaultProps = {
-    props: {
-        data:  data || {}
-    },
-    /**
+	const { data, errors } = await client.query( {
+		query: GET_PAGE,
+		variables: {
+			uri: '/'
+		}
+
+	} );
+
+	const defaultProps = {
+		props: {
+			data: data || {}
+		},
+		/**
      * Revalidate means that if a new request comes to server, then every 1 sec it will check
      * if the data is changed, if it is changed then it will update the
      * static file inside .next folder with the new data, so that any 'SUBSEQUENT' requests should have updated data.
      */
-    revalidate: 1,
-};
+		revalidate: 1,
+	};
 
-return defaultProps;
+	return defaultProps;
 }
 
