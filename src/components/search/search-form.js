@@ -1,13 +1,13 @@
 
 import PropTypes from 'prop-types';
-import { SearchIcon } from '../../icons/index';
+import  SvgSearchIcon  from '../../icons/SvgSearchIcon';
 
 const SearchForm = ( {searchQuery, setSearchQuery, handleSearchFormSubmit} ) => {
   return (
     <form className="flex w-full justify-center" onSubmit={handleSearchFormSubmit}>
       <div className="block relative w-4/5">
             <span className="h-full absolute inset-y-0 left-0 flex items-center pl-2">
-              <SearchIcon className="h-4 w-4 fill-current text-gray-500"/>
+              <SvgSearchIcon className="h-4 w-4 fill-current text-gray-500"/>
             </span>
         <input
           placeholder="Search..."
