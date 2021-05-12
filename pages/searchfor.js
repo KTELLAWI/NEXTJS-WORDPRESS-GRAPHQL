@@ -32,7 +32,7 @@ export default function searchfor ( {dataa} ) {
 
 	const router = useRouter();
     const { header, footer, headerMenus, footerMenus, slug } = dataa || {};
-    const [ searchQuery, setSearchQuery ] = useState(gsearchQueryString);
+    const [ searchQuery, setSearchQuery ] = useState(searchQueryString);
 
 
 
