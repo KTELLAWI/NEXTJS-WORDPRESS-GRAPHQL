@@ -57,6 +57,7 @@ const LoadMorePosts = ({posts,classes,graphQLQuery,searchQuery}) => {
         },
         onError: (error) => {
             setError(error?.graphQLErrors ?? '')
+            console.log(error)
         }
     })
 
@@ -120,7 +121,7 @@ const LoadMorePosts = ({posts,classes,graphQLQuery,searchQuery}) => {
                     )}
                 </div>
             ) : null}
-            {error && <div className='w-full flex justify-center my-10'>{error}</div>}
+            {error && <div className='w-full flex justify-center my-10'>No More Available</div>}
         </div>
     )
 }
