@@ -23,7 +23,8 @@ const cache = new InMemoryCache({
  */
 const link = createHttpLink({
 
-	uri:"http://34.72.169.230/graphql",
+	uri:`${process.env.GRAPHQL_HOST}/graphql`
+	,
 	//"http://34.72.169.230/graphql",
 	//`${process.env.NEXT_PUBLIC_GRAPHQL_HOST}/graphql`,
      //
