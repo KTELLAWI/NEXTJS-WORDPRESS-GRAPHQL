@@ -120,7 +120,7 @@ const LoadMorePosts = ({posts,classes,graphQLQuery,searchQuery}) => {
                     )}
                 </div>
             ) : null}
-            {error && <div className='w-full flex justify-center my-10'>No articles available</div>}
+            {error && <div className='w-full flex justify-center my-10'>{error}</div>}
         </div>
     )
 }
