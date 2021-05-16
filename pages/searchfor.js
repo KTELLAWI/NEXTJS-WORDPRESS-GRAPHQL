@@ -37,8 +37,6 @@ export default function searchfor ( {dataa} ) {
 
 
    const [ fetchPosts,{ loading} ] = useLazyQuery( GET_SEARCH_RESULTS_WITH_TOTAL_PAGES, {
-    fetchPolicy: "network-only",
-    notifyOnNetworkStatusChange: true,
     onCompleted: ( data ) => {
       setQueryResultPosts( data?.posts ?? {} );
       setShowResultInfo( true );
