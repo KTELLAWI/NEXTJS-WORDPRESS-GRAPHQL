@@ -1,5 +1,5 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-
+const API_KEY = "http://34.72.169.230/graphql"
 const defaultOptions = {
 	watchQuery: {
 		fetchPolicy: "no-cache",
@@ -23,8 +23,8 @@ const cache = new InMemoryCache({
  */
 const link = createHttpLink({
 
-	uri:`${process.env.GRAPHQL_HOST}/graphql`
-	,
+	uri:API_KEY,
+	//`${process.env.GRAPHQL_HOST}/graphql`
 	//"http://34.72.169.230/graphql",
 	//`${process.env.NEXT_PUBLIC_GRAPHQL_HOST}/graphql`,
      //
