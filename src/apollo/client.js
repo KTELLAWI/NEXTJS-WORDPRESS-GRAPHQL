@@ -25,7 +25,7 @@ const link = createHttpLink({
 
 	uri:`${process.env.GRAPHQL_HOST}/graphql`,
 	//'http://localhost:8020/graphql'
-	`${process.env.GRAPHQL_HOST}/graphql`,
+	//`${process.env.GRAPHQL_HOST}/graphql`,
 	
 	//uri: `${process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL}/graphql`,
 	//API_KEY,
