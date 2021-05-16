@@ -98,6 +98,12 @@ export default function searchfor ( {dataa} ) {
 
 	return (
         <>
+        
+             <Head>
+             <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/> 
+
+            </Head>
+           
         <Header header={ header } headerMenus={ headerMenus?.edges ?? [] } slug={slug}/>
         <div className="mx-auto min-h-almost-screen  " >
          <SearchBox
