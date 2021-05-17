@@ -23,7 +23,7 @@ const cache = new InMemoryCache({
  */
 const link = createHttpLink({
 
-	uri:"https://wordpress.aromainsider.work/",
+	uri:"https://wordpress.aromainsider.work/graphql",
 	//`${process.env.GRAPHQL_HOST}/graphql`,	
 	//'http://localhost:8020/graphql'
 
